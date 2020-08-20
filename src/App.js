@@ -19,9 +19,10 @@ function App() {
 
     const title = document.querySelector('#titleText_id').value;
     const owner = document.querySelector('#ownerText_id').value;
-    const teste = { techs: ["Node.js","vuejs"]}
+    const techs_spring = document.querySelector('#techsText_id').value;
+    const techs = techs_spring.split(',')
 
-    const response = await api.post('repositories',{title:title, owner: owner, teste})
+    const response = await api.post('repositories',{title:title, owner: owner, techs: techs})
     const repository = response.data;
     setRepositories([...repositories, repository])
   }
@@ -67,7 +68,8 @@ function App() {
       </ul>
       <br/>
       <input type="text" name="title" id="titleText_id" placeholder="title"/><br/><br/>
-      <input type="text" name="owner" id="ownerText_id"placeholder="owner"/><br/>
+      <input type="text" name="owner" id="ownerText_id" placeholder="owner"/><br/><br/>
+      <input type="text" name="techs" id="techsText_id" placeholder="python,java,..."/><br/>
 
       <button onClick={handleAddRepository}>Adicionar</button>
     </div>
